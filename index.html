@@ -3,87 +3,279 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>3D Project Interface</title>
+    <title>Landing Page</title>
     <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
         body {
-            background-color: #D9A8BB;
-            font-family: Helvetica, sans-serif;
-            color: #4A4A4A;
+            font-family: Jost, medium, sans-serif;
+        }
+        nav {
+            width: 100%;
+            background-color: #ffffff;
+	    opacity: 0.8;
+            position: fixed;
+            top: 0;
+            left: 0;
+            display: flex;
+            justify-content: center;
+            padding: 10px 0;
+            z-index: 1000;
+        }
+        nav a {
+            color: #000000;
+            text-decoration: none;
+            padding: 10px 20px;
+            margin: 0 10px;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+        nav a:hover {
+            opacity: 0.5;
+        }
+        .container {
+            width: 100%;
+            height: 100%;
             display: flex;
             justify-content: center;
             align-items: center;
             flex-direction: column;
-            height: 100vh;
-            margin: 40px;
+            scroll-snap-align: start;
         }
-        .buttons {
-            display: flex;
-            gap: 20px;
-            margin-bottom: 40px;
+        .hero {
+            background-color: #FADADD;
+            background-image: url('your-hero-image-url.jpg');
+            background-size: cover;
+            background-position: center;
         }
-        .button {
-            width: 100px;
-            height: 100px;
-            background-color: #817CA0;
-            border-radius: 30px;
-            transition: opacity 0.3s;
+        .cards-container {
+            background-color: #F0D9FF;
+            position: relative;
+        }
+        .cards {
             display: flex;
             justify-content: center;
             align-items: center;
-            overflow: hidden;
-        }
-        .button img {
             width: 100%;
             height: 100%;
-            object-fit: cover;
+            position: relative;
         }
-        .button:hover {
+        .card {
+            width: 400px;
+            height: 300px;
+            background-color: #A1C4FD;
+            border-radius: 20px;
+            margin: 20px;
+            position: absolute;
+            cursor: grab;
+            background-size: cover;
+            background-position: center;
+        }
+        .gallery-container {
+            background-color: #E0BBE4;
+            overflow-x: hidden;
+            overflow-y: hidden;
+        }
+        .gallery {
+            display: flex;
+            height: 100%;
+            scroll-snap-type: x mandatory;
+            overflow-x: auto;
+            scrollbar-width: none; /* For Firefox */
+            -ms-overflow-style: none; /* For Internet Explorer and Edge */
+        }
+        .gallery::-webkit-scrollbar {
+            display: none; /* For Chrome, Safari, and Opera */
+        }
+        .gallery-item {
+            flex: 0 0 20%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            scroll-snap-align: start;
+        }
+        .gallery-item img {
+            border-radius: 50%;
+            width: 100px;
+            height: 100px;
+            margin-bottom: 10px;
+            transition: all 0.3s ease;
+        }
+        .gallery-item img:hover {
+            opacity: 0.5;
+        }
+        .blue-button {
+            background-color: #0000FF;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            display: block;
+            text-align: center;
+        }
+        .blue-button:hover {
             opacity: 0.5;
         }
         .content {
+            background-color: #D0E6A5;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
             text-align: center;
-            max-width: 50%;
+            padding: 20px;
         }
-        .content p {
-            margin: 50px 40px;
-            line-height: 30px;
-        }
-        .back-to-top {
-            background-color: #817CA0;
-            color: white;
-            border: none;
-            padding: 15px 20px;
-            border-radius: 30px;
-            cursor: pointer;
-            text-decoration: none;
-            transition: opacity 0.3s;
-        }
-        .back-to-top:hover {
-            opacity: 0.5;
+        footer {
+            background-color: #F4A261;
+            padding: 10px;
+            text-align: center;
         }
     </style>
 </head>
 <body>
-    <div class="buttons">
-        <div class="button">
-            <img src="URL_ZU_DEINEM_BILD_1" alt="Bild 1">
-        </div>
-        <div class="button">
-            <img src="URL_ZU_DEINEM_BILD_2" alt="Bild 2">
-        </div>
-        <div class="button">
-            <img src="URL_ZU_DEINEM_BILD_3" alt="Bild 3">
-        </div>
-        <div class="button">
-            <img src="URL_ZU_DEINEM_BILD_4" alt="Bild 4">
-        </div>
-        <div class="button">
-            <img src="URL_ZU_DEINEM_BILD_5" alt="Bild 5">
+    <nav>
+        <a href="#">Home</a>
+        <a href="#">About</a>
+        <a href="#">Projects</a>
+        <a href="#">Contact</a>
+    </nav>
+    <div class="container hero">
+        <img src="your-image-url.jpg" alt="Hello You" style="width: 50%;">
+    </div>
+    <div class="container cards-container">
+        <div class="cards">
+            <div class="card" style="left: 0; top: 0; background-image: url('card-image1.jpg');"></div>
+            <div class="card" style="left: 400px; top: 0; background-image: url('card-image2.jpg');"></div>
+            <div class="card" style="left: 800px; top: 0; background-image: url('card-image3.jpg');"></div>
+            <div class="card" style="left: 1200px; top: 0; background-image: url('card-image4.jpg');"></div>
         </div>
     </div>
-    <div class="content">
-        <p>This was my first project using Blender and animating in 3D. During the producing phase I got in touch with high poly issues and material transfer problems. By solving those problems I learned a lot about video game production.</p>
-        <a href="#" class="back-to-top">back to top</a>
+    <div class="container gallery-container">
+        <div class="gallery">
+            <div class="gallery-item">
+                <img src="image1.jpg" alt="Gallery Image 1">
+                <a href="#" class="blue-button">See Inventory</a>
+            </div>
+            <div class="gallery-item">
+                <img src="image2.jpg" alt="Gallery Image 2">
+                <a href="#" class="blue-button">See Inventory</a>
+            </div>
+            <div class="gallery-item">
+                <img src="image3.jpg" alt="Gallery Image 3">
+                <a href="#" class="blue-button">See Inventory</a>
+            </div>
+            <div class="gallery-item">
+                <img src="image4.jpg" alt="Gallery Image 4">
+                <a href="#" class="blue-button">See Inventory</a>
+            </div>
+            <div class="gallery-item">
+                <img src="image5.jpg" alt="Gallery Image 5">
+                <a href="#" class="blue-button">See Inventory</a>
+            </div>
+            <div class="gallery-item">
+                <img src="image6.jpg" alt="Gallery Image 6">
+                <a href="#" class="blue-button">See Inventory</a>
+            </div>
+            <div class="gallery-item">
+                <img src="image7.jpg" alt="Gallery Image 7">
+                <a href="#" class="blue-button">See Inventory</a>
+            </div>
+            <div class="gallery-item">
+                <img src="image8.jpg" alt="Gallery Image 8">
+                <a href="#" class="blue-button">See Inventory</a>
+            </div>
+        </div>
     </div>
+    <div class="container content">
+        <img src="your-image-url.jpg" alt="Profile Image" style="width: 150px; border-radius: 50%; margin-bottom: 20px;">
+        <p>Dein Text hier...</p>
+        <a href="#" class="blue-button">Mehr erfahren</a>
+    </div>
+    <footer>
+        <p>&copy; 2024 Dein Unternehmen. Alle Rechte vorbehalten.</p>
+    </footer>
+
+    <script>
+        // Drag and drop functionality
+        const cards = document.querySelectorAll('.card');
+        let currentCard = null;
+        let shiftX, shiftY;
+        
+        cards.forEach(card => {
+            card.addEventListener('mousedown', function(e) {
+                currentCard = card;
+                currentCard.style.zIndex = 1000;
+                
+                const rect = currentCard.getBoundingClientRect();
+                shiftX = e.clientX - rect.left;
+                shiftY = e.clientY - rect.top;
+                
+                moveAt(e.pageX, e.pageY);
+                
+                function moveAt(pageX, pageY) {
+                    const newLeft = pageX - shiftX;
+                    const newTop = pageY - shiftY;
+
+                    // Keep the card within the container boundaries
+                    const containerRect = document.querySelector('.cards').getBoundingClientRect();
+                    const cardRect = currentCard.getBoundingClientRect();
+
+                    if (newLeft < containerRect.left) {
+                        currentCard.style.left = '0px';
+                    } else if (newLeft + cardRect.width > containerRect.right) {
+                        currentCard.style.left = containerRect.width - cardRect.width + 'px';
+                    } else {
+                        currentCard.style.left = newLeft - containerRect.left + 'px';
+                    }
+
+                    if (newTop < containerRect.top) {
+                        currentCard.style.top = '0px';
+                    } else if (newTop + cardRect.height > containerRect.bottom) {
+                        currentCard.style.top = containerRect.height - cardRect.height + 'px';
+                    } else {
+                        currentCard.style.top = newTop - containerRect.top + 'px';
+                    }
+                }
+
+                function onMouseMove(event) {
+                    moveAt(event.pageX, event.pageY);
+                }
+
+                document.addEventListener('mousemove', onMouseMove);
+
+                document.addEventListener('mouseup', function() {
+                    document.removeEventListener('mousemove', onMouseMove);
+                    currentCard.style.zIndex = '';
+                    currentCard = null;
+                }, { once: true });
+            });
+
+            card.ondragstart = function() {
+                return false;
+            };
+        });
+
+        // Gallery scrolling functionality
+        const gallery = document.querySelector('.gallery');
+        let isGalleryScrollEnd = false;
+
+        gallery.addEventListener('wheel', (event) => {
+            if (gallery.scrollLeft + gallery.clientWidth >= gallery.scrollWidth) {
+                isGalleryScrollEnd = true;
+                window.scrollBy(0, event.deltaY);
+            } else {
+                isGalleryScrollEnd = false;
+                gallery.scrollBy({ left: event.deltaY });
+            }
+        });
+    </script>
 </body>
 </html>
